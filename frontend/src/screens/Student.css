@@ -1,41 +1,32 @@
 .container1 {
-  /* height:190vh; */
-
-  /* background: url("student.jpg"); */
+  /* height: 100vh; */
+  /* position: absolute; */
+  min-height: 100vh;
+  background-color: #f0f0f0;
   padding: 10px;
   overflow: auto;
-  /* background: chocolate; */
-  /* display: grid; */
-  /* place-content: center; */
-  /* place-items: center; */
-  /* background-position: center; /* Center the image */
-  /* background-repeat: no-repeat; /* Do not repeat the image */
-  /* background-size: cover; */
-  /* padding-bottom: 30px; */
 }
 .outer-layout {
-  /* max-height:650px; */
   max-width: 80vw;
-  background: rgb(7, 91, 170);
+  background-color: white;
   margin: auto;
   padding: 10px;
-  /* border: 3px solid red;
-    margin-bottom: 100px !important; */
+  outline: auto;
+  outline-color: lightgray;
   border-radius: 7px;
+  font-weight: bold;
 }
 .outer-layout h1 {
+  font-size: x-large;
   text-align: center;
-  color: white;
-  /* margin-top: 20px; */
+  color: black;
 }
 
 .outer-layout .form-inner {
-  padding: 20px 10px 10px 0;
+  padding: 0px 10px 0px 10;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5px;
-  /* margin-bottom: 10px; */
-  /* border:2px solid red; */
 }
 form {
   padding: 3px;
