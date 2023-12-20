@@ -12,6 +12,9 @@ import {
   STUDENT_REGISTER_REQUEST,
   STUDENT_REGISTER_SUCCESS,
   STUDENT_REGISTER_FAIL,
+  STUDENT_UPDATE_REQUEST,
+  STUDENT_UPDATE_SUCCESS,
+  STUDENT_UPDATE_FAIL,
   STUDENT_DELETE_REQUEST,
   STUDENT_DELETE_SUCCESS,
   STUDENT_DELETE_FAIL,
@@ -37,6 +40,22 @@ export const studentListReducer = (state = { students: [] }, action) => {
     case STUDENT_LIST_FAIL:
       return { loading: false, error: action.payload }
     case STUDENT_LIST_CLEAR:
+      return {}
+    default:
+      return state
+  }
+}
+
+//following displays student details
+export const studentDetailsReducer = (state = { student: {} }, action) => {
+  switch (action.type) {
+    case STUDENT_SEARCH_REQUEST:
+      return { loading: true, student: {} }
+    case STUDENT_SEARCH_SUCCESS:
+      return { loading: false, student: action.payload }
+    case STUDENT_SEARCH_FAIL:
+      return { loading: false, error: action.payload }
+    case STUDENT_SEARCH_CLEAR:
       return {}
     default:
       return state
@@ -84,6 +103,21 @@ export const studentRegisterReducer = (state = {}, action) => {
       return { loading: false, success: action.payload }
     case STUDENT_REGISTER_FAIL:
       return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+//FOLLOWING IS FOR UPDATE THE STUDENT DETAILS
+
+export const studentUpdateReducer = (state = {}, action) => {
+  switch(action.type){
+    case STUDENT_UPDATE_REQUEST:
+      return {loading: true}
+    case STUDENT_UPDATE_SUCCESS:
+      return {loading: false, success: action.payload}
+    case STUDENT_UPDATE_FAIL:
+      return {loading: false, error: action.payload}
     default:
       return state
   }

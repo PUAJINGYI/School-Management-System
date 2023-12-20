@@ -9,6 +9,73 @@ import nonTeachingStaffAttendance from '../models/nonTeachingStaffAttendance.js'
 import TeacherSalary from '../models/teacherSalaryModel.js'
 const router = express.Router()
 
+router.post(
+  "/edit/:id",
+  asyncHandler(async (req, res) => {
+    const nonTeachingStaff = await NonTeachingStaff.findById(req.params.id);
+    console.log(nonTeachingStaff);
+    if (nonTeachingStaff) {
+      res.json(nonTeachingStaff);
+    } else {
+      res.status(404);
+      throw new Error("Non teaching staff not found");
+    }
+  })
+);
+
+//following route is for updating the non teaching staff details
+router.put(
+  '/update/:id', 
+  protect,
+  asyncHandler(async (req, res) => {
+    const staffId = req.params.id;
+    const {
+      image,
+      staff_name,
+      qualification,
+      email,
+      address,
+      contact_no,
+      work,
+      previous_school,
+      age,
+      estimated_salary,
+      gender,
+    } = req.body;
+
+    try {
+      const existingStaff = await NonTeachingStaff.findById(staffId);
+
+      if (!existingStaff) {
+        res.status(404).json({ message: 'Non teaching staff not found' });
+        return;
+      }
+
+      existingStaff.image = image;
+      existingStaff.staff_name = staff_name;
+      existingStaff.qualification = qualification;
+      existingStaff.email = email;
+      existingStaff.address = address;
+      existingStaff.contact_no = contact_no;
+      existingStaff.work = work;
+      existingStaff.previous_school = previous_school;
+      existingStaff.age = age;
+      existingStaff.estimated_salary = estimated_salary;
+      existingStaff.gender = gender;
+      const updatedStaff = await existingStaff.save();
+
+      if (updatedStaff) {
+        res.json({ message: 'Non teaching staff updated successfully', updatedStaff });
+      } else {
+        res.status(400).json({ message: 'Unable to update non teaching staff' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  })
+);
+
 //following router is for registering the teacher
 
 router.post(

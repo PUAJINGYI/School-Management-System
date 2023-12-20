@@ -92,6 +92,60 @@ router.post(
     }
   })
 )
+
+//following route is for updating the teacher details
+router.put(
+  '/update/:id', 
+  protect,
+  asyncHandler(async (req, res) => {
+    const teacherId = req.params.id;
+    const {
+      teacher_name,
+      email,
+      qualification,
+      address,
+      subjectToTeach,
+      contact_no,
+      previous_school,
+      age,
+      estimated_salary,
+      image,
+      gender,
+    } = req.body;
+
+    try {
+      const existingTeacher = await Teacher.findById(teacherId);
+
+      if (!existingTeacher) {
+        res.status(404).json({ message: 'Teacher not found' });
+        return;
+      }
+
+      existingTeacher.teacher_name = teacher_name;
+      existingTeacher.email = email;
+      existingTeacher.qualification = qualification;
+      existingTeacher.address = address;
+      existingTeacher.subjectToTeach = subjectToTeach;
+      existingTeacher.contact_no = contact_no;
+      existingTeacher.previous_school = previous_school;
+      existingTeacher.age = age;
+      existingTeacher.estimated_salary = estimated_salary;
+      existingTeacher.image = image;
+      existingTeacher.gender = gender;
+      const updatedTeacher = await existingTeacher.save();
+
+      if (updatedTeacher) {
+        res.json({ message: 'Teacher updated successfully', updatedTeacher });
+      } else {
+        res.status(400).json({ message: 'Unable to update teacher' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  })
+);
+
 //router for getting all the teachers
 router.get(
   '/',
@@ -126,6 +180,20 @@ router.delete(
     }
   })
 )
+
+router.post(
+  "/edit/:id",
+  asyncHandler(async (req, res) => {
+    const teacher = await Teacher.findById(req.params.id);
+    console.log(teacher);
+    if (teacher) {
+      res.json(teacher);
+    } else {
+      res.status(404);
+      throw new Error("teacher not found");
+    }
+  })
+);
 
 //following route is for paying the fees of teachers
 

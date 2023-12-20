@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 import {
   STAFF_DELETE_FAIL,
   STAFF_DELETE_REQUEST,
@@ -12,7 +12,13 @@ import {
   STAFF_SALARY_FAIL,
   STAFF_SALARY_REQUEST,
   STAFF_SALARY_SUCCESS,
-} from '../constants/staffConstants'
+  STAFF_SEARCH_FAIL,
+  STAFF_SEARCH_REQUEST,
+  STAFF_SEARCH_SUCCESS,
+  STAFF_UPDATE_FAIL,
+  STAFF_UPDATE_REQUEST,
+  STAFF_UPDATE_SUCCESS,
+} from "../constants/staffConstants";
 
 export const PaySalary = (
   staffname,
@@ -25,16 +31,16 @@ export const PaySalary = (
   try {
     dispatch({
       type: STAFF_SALARY_REQUEST,
-    })
+    });
     const {
       userLogin: { userCred },
-    } = getState()
+    } = getState();
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${userCred.token}`,
       },
-    }
+    };
     const { data } = await axios.post(
       `/api/STAFFs/fees/${staffname}/${staffid}`,
       {
@@ -43,11 +49,11 @@ export const PaySalary = (
         salaryAmount,
       },
       config
-    )
+    );
     dispatch({
       type: STAFF_SALARY_SUCCESS,
       payload: data,
-    })
+    });
     //we are getting  the json data from our backend request so we need to convert it into the
     //string before we save them in our local storage of our  browser
   } catch (error) {
@@ -57,9 +63,9 @@ export const PaySalary = (
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
-    })
+    });
   }
-}
+};
 
 //STAFF REGISTER
 
@@ -83,19 +89,19 @@ export const staffregister = (
   try {
     dispatch({
       type: STAFF_REGISTER_REQUEST,
-    })
+    });
     //we need to send headers information so we declaring it inside the config
     const {
       userLogin: { userCred },
-    } = getState()
+    } = getState();
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${userCred.token}`,
       },
-    }
+    };
     const { data } = await axios.post(
-      '/api/staffs/register',
+      "/api/staffs/register",
       {
         staff_name,
 
@@ -114,11 +120,11 @@ export const staffregister = (
         work,
       },
       config
-    )
+    );
     dispatch({
       type: STAFF_REGISTER_SUCCESS,
       payload: data,
-    })
+    });
     //we are getting  the json data from our backend request so we need to convert it into the
     //string before we save them in our local storage of our  browser
   } catch (error) {
@@ -128,9 +134,91 @@ export const staffregister = (
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
-    })
+    });
   }
-}
+};
+
+export const getStaffDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: STAFF_SEARCH_REQUEST,
+    });
+    const { data } = await axios.post(`/api/staffs/edit/${id}`);
+    console.log("Data is ", data);
+    dispatch({
+      type: STAFF_SEARCH_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: STAFF_SEARCH_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+//staff update
+export const Update = (
+  id,
+  image,
+  staff_name,
+  qualification,
+  email,
+  address,
+  contact_no,
+  work,
+  previous_school,
+  age,
+  estimated_salary,
+  gender
+) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: STAFF_UPDATE_REQUEST,
+    });
+    const {
+      userLogin: { userCred },
+    } = getState();
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userCred.token}`,
+      },
+    };
+    const { data } = await axios.put(
+      `/api/staffs/update/${id}`,
+      {
+        image,
+        staff_name,
+        qualification,
+        email,
+        address,
+        contact_no,
+        work,
+        previous_school,
+        age,
+        estimated_salary,
+        gender,
+      },
+      config
+    );
+    dispatch({
+      type: STAFF_UPDATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: STAFF_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 //FOLLOWING IS FOR DELETING THE STAFF
 
@@ -138,12 +226,12 @@ export const deleteStaff = (id) => async (dispatch) => {
   try {
     dispatch({
       type: STAFF_DELETE_REQUEST,
-    })
-    const { data } = await axios.delete(`/api/staffs/delete/${id}`)
+    });
+    const { data } = await axios.delete(`/api/staffs/delete/${id}`);
     dispatch({
       type: STAFF_DELETE_SUCCESS,
       payload: data,
-    })
+    });
   } catch (error) {
     dispatch({
       type: STAFF_DELETE_FAIL,
@@ -151,9 +239,9 @@ export const deleteStaff = (id) => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
-    })
+    });
   }
-}
+};
 
 //STAFF all
 
@@ -161,12 +249,12 @@ export const listStaffs = () => async (dispatch) => {
   try {
     dispatch({
       type: STAFF_LIST_REQUEST,
-    })
-    const { data } = await axios.get('/api/staffs')
+    });
+    const { data } = await axios.get("/api/staffs");
     dispatch({
       type: STAFF_LIST_SUCCESS,
       payload: data,
-    })
+    });
   } catch (error) {
     dispatch({
       type: STAFF_LIST_FAIL,
@@ -174,6 +262,6 @@ export const listStaffs = () => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
-    })
+    });
   }
-}
+};

@@ -9,9 +9,11 @@ import {
   studentClassListReducer,
   studentSearchReducer,
   studentRegisterReducer,
+  studentUpdateReducer,
   studentDeleteReducer,
   studentAttendanceReducer,
   studentFeesReducer,
+  studentDetailsReducer,
 } from './reducers/studentReducers'
 import {
   allIncomeReducer,
@@ -22,15 +24,21 @@ import {
   teacherRegisterReducer,
   teacherDeleteReducer,
   teacherListReducer,
+  teacherDetailsReducer,
+  teacherUpdateReducer,
 } from './reducers/teacherReducers'
 import {
   staffSalaryReducer,
   staffRegisterReducer,
   staffDeleteReducer,
   staffListReducer,
+  staffDetailsReducer,
+  staffUpdateReducer,
 } from './reducers/staffReducers'
 const reducer = combineReducers({
   studentList: studentListReducer,
+  studentDetails: studentDetailsReducer,
+  studentUpdate: studentUpdateReducer,
   studentClassList: studentClassListReducer,
   studentSearch: studentSearchReducer,
   userLogin: userLoginReducer,
@@ -42,10 +50,14 @@ const reducer = combineReducers({
   teacherRegister: teacherRegisterReducer,
   teacherDelete: teacherDeleteReducer,
   teacherList: teacherListReducer,
+  teacherDetails: teacherDetailsReducer,
+  teacherUpdate: teacherUpdateReducer,
   staffSalary: staffSalaryReducer,
   staffRegister: staffRegisterReducer,
   staffDelete: staffDeleteReducer,
   staffList: staffListReducer,
+  staffDetails: staffDetailsReducer,
+  staffUpdate: staffUpdateReducer,
   allIncome: allIncomeReducer,
   allSalary: allSalaryReducer,
 })
