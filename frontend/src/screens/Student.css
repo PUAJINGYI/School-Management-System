@@ -54,17 +54,8 @@
   font-size: x-large;
   text-align: center;
   color: black;
-.outer-layout h1 {
-  font-size: x-large;
-  text-align: center;
-  color: black;
 }
 
-.outer-layout .form-inner {
-  padding: 0px 10px 0px 10;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px;
 .outer-layout .form-inner {
   padding: 0px 10px 0px 10;
   display: grid;
@@ -74,12 +65,7 @@
 form {
   align-items: center;
   flex: auto;
-form {
-  align-items: center;
-  flex: auto;
 }
-.form-control {
-  padding: 10px;
 .form-control {
   padding: 10px;
 }
@@ -89,17 +75,7 @@ form {
   display: block;
   margin-bottom: 10px;
   color: black;
-.form-control label {
-  margin-left: 5px;
-  display: block;
-  margin-bottom: 10px;
-  color: black;
 }
-.form-control input {
-  padding: 8px 8px 8px 5px;
-  width: 100%;
-  font-size: 15px;
-  border-radius: 7px;
 .form-control input {
   padding: 8px 8px 8px 5px;
   width: 100%;
@@ -226,24 +202,12 @@ form {
   }
   .first-input {
   }
-  .outer-layout .form-inner {
-    grid-template-columns: 1fr;
-  }
-  .search-form form {
-    flex-direction: column;
-  }
-  .btn-search {
-  }
-  .first-input {
-  }
 }
 
 @media only screen and (min-width: 700px) {
   /* .outer-layout form{
-  /* .outer-layout form{
         grid-template-columns: 1fr;
     } */
-  /* .container1{
   /* .container1{
         height:100vh;
     } */
@@ -317,18 +281,10 @@ form {
   background: rgb(61, 10, 10);
   border-radius: 5px;
   cursor: pointer;
-.class-list {
-  background: rgb(61, 10, 10);
-  border-radius: 5px;
-  cursor: pointer;
 
   /* color:white; */
   /* max-width: 300px; */
-  /* color:white; */
-  /* max-width: 300px; */
 }
-.class-list:hover {
-  opacity: 0.5;
 .class-list:hover {
   opacity: 0.5;
 }
@@ -337,14 +293,6 @@ form {
   padding: 20px;
 
   /* text-underline-offset: none; */
-.class-list p {
-  color: white;
-  padding: 20px;
-
-  /* text-underline-offset: none; */
-}
-.linker {
-  text-decoration: none;
 }
 .linker {
   text-decoration: none;
@@ -359,25 +307,12 @@ form {
   max-width: 30%;
   background: wheat;
   /* background: yellow; */
-.outer h3 {
-  color: rgb(0, 18, 182);
-  border: 2px solid rgb(224, 197, 197);
-  padding: 5px;
-  max-width: 30%;
-  background: wheat;
-  /* background: yellow; */
 }
-.table-layout {
-  /* border:4px solid red; */
-  overflow-x: auto;
 .table-layout {
   /* border:4px solid red; */
   overflow-x: auto;
 }
 
-table {
-  border: 1px solid rgb(127, 92, 209);
-  border-collapse: collapse;
 table {
   border: 1px solid rgb(127, 92, 209);
   border-collapse: collapse;
@@ -388,27 +323,7 @@ table {
 th,
 td {
   border: 1px solid rgb(192, 140, 140);
-th,
-td {
-  border: 1px solid rgb(192, 140, 140);
 
-  padding: 5px;
-  color: white;
-  /* text-align: center; */
-}
-th {
-  text-align: left;
-}
-.container3 {
-  height: 100vh;
-  padding: 10px;
-  overflow-y: auto;
-  background: rgb(175, 63, 63);
-}
-.container3 .outer {
-  max-width: 90%;
-  background: rgb(26, 54, 5);
-}
   padding: 5px;
   color: white;
   /* text-align: center; */
@@ -433,49 +348,9 @@ td:nth-child(12) {
 td:nth-child(11) {
   text-align: center;
 }
-td:nth-child(12) {
-  text-align: center;
-}
-td:nth-child(11) {
-  text-align: center;
-}
 
-/* student fees section
 /* student fees section
     */
-.search-form {
-  max-width: 1000px;
-  margin: auto;
-  margin-top: 15px;
-  /* margin:10px; */
-  margin-bottom: 15px;
-  padding: 15px;
-}
-.search-form h4 {
-  text-align: center;
-  padding: 5px;
-  color: white;
-  margin-bottom: 10px;
-  font-size: 20px;
-  background: rgb(136, 84, 84);
-}
-.search-form form {
-  /* border:3px solid red; */
-  display: flex;
-  justify-content: center;
-  /* flex-direction: row; */
-  /* max-width: 500px; */
-  /* grid-template-columns: 1fr 0.5fr 0.3fr 0.4fr; */
-}
-.search-form form input {
-  /* border:2px solid red; */
-  padding: 10px;
-  font-size: 15px;
-  /* max-width: 400px; */
-  /* border:none; */
-  outline: none;
-}
-/* .search-form form select{
 .search-form {
   max-width: 1000px;
   margin: auto;
@@ -518,31 +393,7 @@ td:nth-child(11) {
   font-size: 15px;
   /* padding:40px; */
 }
-.search-form form select {
-  /* border:3px solid red; */
-  outline: none;
-  padding: 10px;
-  font-size: 15px;
-  /* padding:40px; */
-}
 
-.btn-search {
-  background: rgb(83, 158, 139);
-  color: white;
-  padding: 10px;
-  border: none;
-  text-transform: uppercase;
-  outline: none;
-  cursor: pointer;
-}
-.btn-search:hover {
-  opacity: 0.8;
-}
-.attendance-outer {
-  padding: 10px;
-  background: rgb(196, 203, 211);
-  padding-bottom: 20px;
-  overflow: auto;
 .btn-search {
   background: rgb(83, 158, 139);
   color: white;
@@ -562,13 +413,6 @@ td:nth-child(11) {
   overflow: auto;
 }
 
-/* FOR STUDENT ATTENDANCE */
-.attendance-outer h1 {
-  background: rgb(58, 47, 47);
-  color: white;
-  max-width: 800px;
-  margin: auto;
-}
 /* FOR STUDENT ATTENDANCE */
 .attendance-outer h1 {
   background: rgb(58, 47, 47);
@@ -583,36 +427,6 @@ td:nth-child(11) {
 
   /* padding:100px; */
   /* max-width: 800px; */
-  border: none;
-  background: red;
-
-  /* padding:100px; */
-  /* max-width: 800px; */
-}
-.attendance-outer table thead {
-  border: none;
-  background: rgb(92, 85, 180);
-}
-.attendance {
-  padding: 20px;
-  margin: 20px;
-  /* border:2px solid red; */
-}
-.attendance td {
-  background: rgb(235, 227, 227);
-  /* border:none; */
-  padding: 30px;
-  color: black;
-  margin: 30px;
-}
-.present {
-  background: rgb(52, 184, 0) !important ;
-  /* color:red; */
-  text-transform: uppercase;
-}
-.absent {
-  background: red !important;
-  text-transform: uppercase;
 }
 .attendance-outer table thead {
   border: none;
@@ -647,24 +461,7 @@ td:nth-child(11) {
   margin: auto;
   margin: 100px 100px 0 100px;
 }
-.admitCard-outer {
-  /* border:2px solid red; */
-  /* padding:100px; */
-  /* height:100vh; */
-  margin: auto;
-  margin: 100px 100px 0 100px;
-}
 
-.admitCard-outer .link {
-  display: block;
-  text-align: left;
-  padding: 20px;
-  background: rgb(0, 11, 109);
-  margin: auto;
-  color: white;
-  text-decoration: none;
-  margin-top: 20px;
-  border-radius: 10px;
 .admitCard-outer .link {
   display: block;
   text-align: left;
@@ -690,23 +487,7 @@ td:nth-child(11) {
 
   /* border:2px  solid red; */
 }
-  /* border:2px solid red; */
-}
-.admitCard-outer .link:hover {
-  /* opacity: 0.8; */
-  background: darkorange;
-  color: black;
-}
-.admitCardouter {
-  overflow: auto;
 
-  /* display: block; */
-
-  /* border:2px  solid red; */
-}
-
-/* for admit card */
-/* .container5{
 /* for admit card */
 /* .container5{
         display: grid;
@@ -726,27 +507,7 @@ td:nth-child(11) {
   width: 600px;
   padding-bottom: 30px;
   /* height:300px; */
-
-.admitCard {
-  display: grid;
-  grid-template-areas:
-    "top top top"
-    "middle middle middle"
-    "bottom bottom bottom";
-  grid-gap: 10px;
-  overflow: auto;
-  background-color: #d8e1e9;
-  padding: 10px;
-  width: 600px;
-  padding-bottom: 30px;
-  /* height:300px; */
 }
-.admitCardTop {
-  grid-area: top;
-  /* border: 2px solid red; */
-  display: grid;
-  background: rgb(90, 33, 33);
-  grid-template-columns: 0.1fr 1fr;
 .admitCardTop {
   grid-area: top;
   /* border: 2px solid red; */
@@ -757,15 +518,7 @@ td:nth-child(11) {
 .admitCardTop img {
   width: 90px;
   height: 80px;
-.admitCardTop img {
-  width: 90px;
-  height: 80px;
 }
-.admitCardMiddle {
-  grid-area: middle;
-  /* border: 2px solid red; */
-  background: rgb(196, 165, 111);
-  padding: 0 20px 20px 20px;
 .admitCardMiddle {
   grid-area: middle;
   /* border: 2px solid red; */
@@ -777,17 +530,8 @@ td:nth-child(11) {
   /* border: 2px solid red; */
   background: rgb(127, 92, 209);
   padding: 3px;
-.admitCardBottom {
-  grid-area: bottom;
-  /* border: 2px solid red; */
-  background: rgb(127, 92, 209);
-  padding: 3px;
 }
 
-.schooldetails {
-  text-align: center;
-  color: white;
-  margin: auto;
 .schooldetails {
   text-align: center;
   color: white;
@@ -797,34 +541,16 @@ td:nth-child(11) {
 .details {
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
-.details {
-  display: grid;
-  grid-template-columns: 2fr 2fr 1fr;
 }
 
-.details p {
-  /* border:2px solid red; */
-  padding: 5px;
 .details p {
   /* border:2px solid red; */
   padding: 5px;
 }
 .details img {
   width: 80px;
-.details img {
-  width: 80px;
 }
 
-.arrange {
-  margin-bottom: 50px;
-  /* border: 2px solid red; */
-  display: grid;
-  overflow: auto;
-  place-content: center;
-  place-items: center;
-  /* text-align: center; */
-  /* margin: auto; */
-  /* display: grid;
 .arrange {
   margin-bottom: 50px;
   /* border: 2px solid red; */
@@ -846,29 +572,7 @@ td:nth-child(11) {
   grid-template-columns: 1fr 0.1fr;
   margin: auto;
   margin-bottom: 40px;
-.exam form {
-  /* border: 2px solid red; */
-  display: grid;
-  width: 50%;
-  place-content: center;
-  grid-template-columns: 1fr 0.1fr;
-  margin: auto;
-  margin-bottom: 40px;
 
-  /* place-items: center; */
-}
-
-.printcmd {
-  padding: 10px;
-  background: red;
-  outline: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  margin-bottom: 10px;
-  text-align: center;
-  margin: auto;
-  /* margin: auto; */
   /* place-items: center; */
 }
 
@@ -889,20 +593,7 @@ td:nth-child(11) {
   display: flex;
   align-items: center;
   align-content: center;
-.printCMD {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  align-content: center;
 }
-.examNumber {
-  padding: 10px;
-  /* margin-bottom: 40px; */
-  /* width: 300px; */
-  outline: none;
-  /* margin: auto; */
-  /* text-align: center; */
-  /* display: grid;
 .examNumber {
   padding: 10px;
   /* margin-bottom: 40px; */
@@ -913,9 +604,6 @@ td:nth-child(11) {
   /* display: grid;
     place-content: center;
     place-items: center; */
-  /* margin-left: 200px; */
-  /* margin:auto; */
-  /* display: flex;
   /* margin-left: 200px; */
   /* margin:auto; */
   /* display: flex;
@@ -931,20 +619,7 @@ td:nth-child(11) {
     display: none;
   }
 }
-  @page {
-    size: 110mm 54.5mm;
-  }
-  .printcmd {
-    display: none;
-  }
-}
 
-.prints {
-  display: grid;
-  place-content: center;
-  place-items: center;
-  gap: 10px;
-}
 .prints {
   display: grid;
   place-content: center;
@@ -957,21 +632,7 @@ td:nth-child(11) {
   place-items: center;
   place-content: center;
 }
-.la {
-  display: grid;
-  place-items: center;
-  place-content: center;
-}
 
-.income-button {
-  display: grid;
-  margin: 200px;
-  margin-bottom: 10px;
-  margin-top: 50px;
-  gap: 10px;
-  place-content: center;
-  /* place-items: center; */
-}
 .income-button {
   display: grid;
   margin: 200px;
@@ -991,22 +652,7 @@ td:nth-child(11) {
   font-size: 15px;
   /* color:white; */
 }
-.income-button .link {
-  /* text-align: left; */
-  padding: 10px;
-  background: cyan;
-  border: none;
-  cursor: pointer;
-  font-size: 15px;
-  /* color:white; */
-}
 
-.income-button .link:hover {
-  background: darkcyan;
-  color: white;
-}
-.income-h1 {
-  /* text-align: center,
 .income-button .link:hover {
   background: darkcyan;
   color: white;
@@ -1025,20 +671,7 @@ td:nth-child(11) {
   /* border: 2px solid rgb(21, 0, 78); */
   /* overflow: auto; */
 }
-  margin: auto;
-  margin: 0 100px 0 100px;
-  text-align: center;
-  /* text-decoration: indianred; */
-  background: rgb(102, 32, 7);
-  color: white;
-  text-transform: capitalize;
-  /* border: 2px solid rgb(21, 0, 78); */
-  /* overflow: auto; */
-}
 
-.incomeform {
-  border: 2px solid red;
-  margin: auto;
 .incomeform {
   border: 2px solid red;
   margin: auto;
@@ -1057,22 +690,9 @@ td:nth-child(11) {
   margin-top: 0;
   overflow: auto;
   /* border:2px solid black; */
-.allincomedetails {
-  /* display: inline; */
-  /* border:2px solid  */
-  margin: 100px;
-  background: rgb(245, 241, 238);
-  display: grid;
-  margin-top: 0;
-  overflow: auto;
-  /* border:2px solid black; */
 
   margin-bottom: 5px;
-  margin-bottom: 5px;
 }
-.outerIncome {
-  /* border:2px solid black; */
-  padding: 10px;
 .outerIncome {
   /* border:2px solid black; */
   padding: 10px;
@@ -1083,15 +703,7 @@ td:nth-child(11) {
   grid-template-rows: 1fr;
   padding: 10px;
   border-bottom: 2px solid black;
-.innerIncome {
-  display: grid;
-  grid-template-columns: 0.1fr 0.5fr 1fr;
-  grid-template-rows: 1fr;
-  padding: 10px;
-  border-bottom: 2px solid black;
 }
-.allIncome p {
-  /* padding:40px; */
 .allIncome p {
   /* padding:40px; */
 }
