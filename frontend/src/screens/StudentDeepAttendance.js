@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { classlistStudent, studentAttendances } from '../actions/studentActions'
 import { STUDENT_ATTENDANCE_RESET } from '../constants/studentConstants'
-import NepaliDate from 'nepali-date-converter'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import axios from 'axios'
@@ -56,7 +55,7 @@ const StudentDeepAttendance = ({ match }) => {
       <h1 className='text-center mt-5 mb-10 text-lg'>
         Attendance for the date of &nbsp;
         <span className='font-semibold underline'>
-          {new NepaliDate().format('YYYY-MM-D')}
+          {new Date().toLocaleDateString()}
         </span>{' '}
       </h1>
       {studentlist.length > 0 && (
