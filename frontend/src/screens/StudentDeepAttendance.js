@@ -6,9 +6,10 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import axios from 'axios'
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
+
 const StudentDeepAttendance = ({ match }) => {
   const matchid = match.params.class
-  const [studentlist, setStudentlist] = useState([])
+  const [attendanceList, setAttendanceList] = useState([])
   const [present, setPresent] = useState({})
   const dispatch = useDispatch()
   const {
@@ -18,17 +19,17 @@ const StudentDeepAttendance = ({ match }) => {
   } = useSelector((state) => state.studentAttendance)
   const { 
     loading: loadingStudents,
-    students,
+    students: allStudentsData,
     error: errorStudents,
   } = useSelector((state) => state.studentClassList)
-  const studentsfinal = students && [...students]
+  const allStudents = allStudentsData && [...allStudentsData]
 
   useEffect(() => {
     const studentsAttend = async () => {
       axios.get(
         `/api/students/class/${matchid}/attendance`
       )
-      .then((res) => setStudentlist(res.data.students))
+      .then((res) => setAttendanceList(res.data.students))
       .catch((err) => console.log(err.response.data.message))
     }
     studentsAttend()
@@ -39,14 +40,30 @@ const StudentDeepAttendance = ({ match }) => {
   }, [dispatch, matchid])
   var i = 1
   const submitAttendance = () => {
-    dispatch(studentAttendances(matchid, students))
+    dispatch(studentAttendances(matchid, allStudentsData))
   }
   const toggleAttendance = (id) => {
-    setPresent((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
-    const new_students = students.filter((datum) => datum._id === id)
+    if (attendanceList.length > 0) {
+      let isPresent = attendanceList.filter((student) => student._id === id)[0].present
+      setAttendanceList((prev) => 
+        prev.map((student) => {
+          if (student._id === id) {
+            student.present = !isPresent
+          }
+          return student
+        })
+      )
+      setPresent((prev) => ({
+        ...prev,
+        [id]: !isPresent,
+      }))
+    } else {
+      setPresent((prev) => ({
+        ...prev,
+        [id]: !prev[id],
+      }))
+    }
+    const new_students = allStudents.filter((student) => student._id === id)
     new_students[0].present = !present[id]
   }
 
@@ -58,8 +75,8 @@ const StudentDeepAttendance = ({ match }) => {
           {new Date().toLocaleDateString()}
         </span>{' '}
       </h1>
-      {studentlist.length > 0 && (
-        <h3 className='text-center font-semibold bg-green-300 w-min whitespace-nowrap m-auto p-3 rounded-sm'>
+      {attendanceList.length > 0 && (
+        <h3 className='text-center font-semibold bg-green-300 w-min whitespace-nowrap m-auto mb-6 p-3 rounded-sm'>
           Attendance already taken for today
         </h3>
       )}
@@ -67,7 +84,7 @@ const StudentDeepAttendance = ({ match }) => {
         <Message variant='success' message={studentsAttendance.message} />
       )}
       {errorAttendance && (
-        <Message variant='danger' message={errorAttendance} />
+        <Message variant='danger' message={errorAttendance.message} />
       )}
       <br />
       {loadingAttendance && <Loader />}
@@ -85,8 +102,8 @@ const StudentDeepAttendance = ({ match }) => {
                 </Tr>
               </Thead>
               <Tbody>
-                {studentlist.length > 0
-                  ? studentlist.map((student) => (
+                {attendanceList.length > 0
+                  ? attendanceList.map((student) => (
                       <Tr key={student._id} className='attendance'>
                         <Td>{i++}</Td>
                         <Td>
@@ -97,15 +114,15 @@ const StudentDeepAttendance = ({ match }) => {
                         </Td>
                         <Td>{student.roll_no}</Td>
                         <Td 
-                          className={`${student.present ? '!bg-green-200' : '!bg-red-200'}`}
+                          className={`cursor-pointer ${student.present ? '!bg-green-200' : '!bg-red-200'}`}
                           onClick={() => toggleAttendance(student._id)}
                         >
                           {student.present ? 'Present' : 'Absent'}
                         </Td>
                       </Tr>
                     ))
-                  : studentsfinal &&
-                    studentsfinal.map((student) => (
+                  : allStudents &&
+                    allStudents.map((student) => (
                       <Tr key={student._id} className='attendance'>
                         <Td>{i++}</Td>
                         <Td>
@@ -126,12 +143,10 @@ const StudentDeepAttendance = ({ match }) => {
               </Tbody>
             </Table>
       }
-      {studentsfinal && (
+      {allStudents && (
         <button
           onClick={submitAttendance}
-          className={`block m-auto mt-4 text-white font-semibold py-2 px-4 rounded-md
-           ${studentlist.length > 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600 cursor-pointer'}`}
-          disabled={studentlist.length > 0}
+          className={`block m-auto mt-4 text-white font-semibold py-2 px-4 rounded-md bg-green-500 hover:bg-green-600 cursor-pointer`}
         >
           Submit
         </button>
