@@ -232,11 +232,10 @@ router.post(
   asyncHandler(async (req, res) => {
     // const students = await Student.find({})
     const { students } = req.body;
-    console.log(req.body);
     const class_teacher = req.user.name;
     // console.log(req.params.classname)
     const attendanceFound = await StudentAttendance.findOne({
-      attendance_date: new Date(),
+      attendance_date: { $gte: new Date().setHours(0, 0, 0) },
       classname: req.params.classname,
     });
     console.log(attendanceFound);
@@ -245,7 +244,6 @@ router.post(
         { _id: attendanceFound._id },
         { $set: { students: students } }
       );
-      console.log("done with re-attendance");
       res.status(201).json({ message: "Attendance retaken successfully" });
     } else {
       const new_attendance = await StudentAttendance.create({
