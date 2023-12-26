@@ -15,7 +15,10 @@ const teacherAttendanceSchema = mongoose.Schema({
         type: String,
         required: true,
       },
-
+      image: {
+        type: String,
+        required: true,
+      },
       teacherId: {
         type: Number,
         required: true,

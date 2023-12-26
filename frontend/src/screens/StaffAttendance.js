@@ -24,14 +24,14 @@ function StaffAttendance() {
   const allStaffs = allStaffsData && [...allStaffsData]
 
   useEffect(() => {
-    // const staffsAttend = async () => {
-    //   axios.get(
-    //     // `/api/staffs/attendance`
-    //   )
-    //   .then((res) => setAttendanceList(res.data.staffs))
-    //   .catch((err) => console.log(err.response.data.message))
-    // }
-    // staffsAttend()
+    const staffsAttend = async () => {
+      axios.get(
+        `/api/staffs/attendance`
+      )
+      .then((res) => setAttendanceList(res.data.staffs))
+      .catch((err) => console.log(err.response.data.message))
+    }
+    staffsAttend()
     dispatch({
       type: STAFF_ATTENDANCE_RESET,
     })
@@ -53,18 +53,18 @@ function StaffAttendance() {
           return staff
         })
       )
+      allStaffs.filter((staff) => staff._id === id)[0].present = !isPresent
       setPresent((prev) => ({
         ...prev,
         [id]: !isPresent,
       }))
     } else {
+      allStaffs.filter((staff) => staff._id === id)[0].present = !present[id]
       setPresent((prev) => ({
         ...prev,
         [id]: !prev[id],
       }))
     }
-    const new_staffs = allStaffs.filter((staff) => staff._id === id)
-    new_staffs[0].present = !present[id]
   }
 
   return (

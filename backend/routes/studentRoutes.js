@@ -39,7 +39,7 @@ router.get(
     });
     // console.log("students",students.length())
     if (students) {
-      console.log(students);
+      // console.log(students);
 
       res.json(students);
     } else {
@@ -238,7 +238,7 @@ router.post(
       attendance_date: { $gte: new Date().setHours(0, 0, 0) },
       classname: req.params.classname,
     });
-    console.log(attendanceFound);
+    // console.log(attendanceFound);
     if (attendanceFound) {
       await StudentAttendance.updateOne(
         { _id: attendanceFound._id },
@@ -252,14 +252,14 @@ router.post(
         attendance_date: new Date(),
         students,
       });
-      console.log(new_attendance);
+      // console.log(new_attendance);
       if (new_attendance) {
         res.status(201).json({
           message: "Attendance taken successfully",
         });
       } else {
         res.status(400);
-        console.log(error);
+        // console.log(error);
         throw new Error("Unable to take attendance");
       }
     }

@@ -24,14 +24,14 @@ function TeacherAttendance() {
   const allTeachers = allTeachersData && [...allTeachersData]
 
   useEffect(() => {
-    // const teachersAttend = async () => {
-    //   axios.get(
-    //     // `/api/teachers/attendance`
-    //   )
-    //   .then((res) => setAttendanceList(res.data.teachers))
-    //   .catch((err) => console.log(err.response.data.message))
-    // }
-    // teachersAttend()
+    const teachersAttend = async () => {
+      axios.get(
+        `/api/teachers/attendance`
+      )
+      .then((res) => setAttendanceList(res.data.teachers))
+      .catch((err) => console.log(err.response.data.message))
+    }
+    teachersAttend()
     dispatch({
       type: TEACHER_ATTENDANCE_RESET,
     })
@@ -53,18 +53,18 @@ function TeacherAttendance() {
           return teacher
         })
       )
+      allTeachers.filter((teacher) => teacher._id === id)[0].present = !isPresent
       setPresent((prev) => ({
         ...prev,
         [id]: !isPresent,
       }))
     } else {
+      allTeachers.filter((teacher) => teacher._id === id)[0].present = !present[id]
       setPresent((prev) => ({
         ...prev,
         [id]: !prev[id],
       }))
     }
-    const new_teachers = allTeachers.filter((teacher) => teacher._id === id)
-    new_teachers[0].present = !present[id]
   }
 
   return (
