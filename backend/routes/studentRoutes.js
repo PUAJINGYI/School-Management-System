@@ -73,10 +73,12 @@ router.get(
   "/search/:class/:name",
   asyncHandler(async (req, res) => {
     console.log(req.params.class, req.params.name);
-    const regex = new RegExp(req.params.name, "i"); // 'i' for case-insensitive search
+    if (req.params.name && req.params.name === "-") req.params.name = "";
+    const classRegex = new RegExp(req.params.class, "i"); // 'i' for case-insensitive search
+    const nameRegex = new RegExp(req.params.name, "i"); // 'i' for case-insensitive search
     const students = await Student.find({
-      classname: capitalize(req.params.class),
-      student_name: { $regex: regex },
+      classname: req.params.class,
+      student_name: { $regex: nameRegex },
     });
     console.log(students);
 

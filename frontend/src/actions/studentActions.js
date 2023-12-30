@@ -72,14 +72,19 @@ export const classlistStudent = (id) => async (dispatch) => {
 };
 //following is for searching the student for paying the fees
 
-export const studentSearch = (name, classname, rollno) => async (dispatch) => {
+export const studentSearch = (name, classname) => async (dispatch) => {
   try {
     dispatch({
       type: STUDENT_SEARCH_REQUEST,
     });
-    console.log(name, classname, rollno);
+
+    if (!name || name === "") {
+      name = "-";
+    }
+    console.log(name, classname);
+
     const { data } = await axios.get(
-      `/api/students/search/${name}/${classname}/${rollno}`
+      `/api/students/search/${classname}/${name}`
     );
     console.log("Data is ", data);
     dispatch({
